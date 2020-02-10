@@ -45,7 +45,7 @@ public class LeavesNodeToDLL
             //inorder(root);
             LeavesToDLLSolution g=new LeavesToDLLSolution();
             root = g.convertToDLL(root);
-            g.pritntDLL(root);
+            g.pritntDLL();
             System.out.println();
 
             // System.out.println(g.tilt(root));
@@ -93,13 +93,13 @@ class LeavesNodeToDllNode{
 }
 */
 class LeavesToDLLSolution
-{
+{   LeavesNodeToDllNode head = null;
     LeavesNodeToDllNode convertToDLL(LeavesNodeToDllNode root)
     {
         List<Integer> al = new ArrayList<Integer>();
         getLeaves(root,al);
         System.out.println(al);
-        LeavesNodeToDllNode head = null;
+        //LeavesNodeToDllNode head = null;
         LeavesNodeToDllNode curr = null;
         for(int x: al){
             LeavesNodeToDllNode temp = new LeavesNodeToDllNode(x);
@@ -109,6 +109,7 @@ class LeavesToDLLSolution
             }else {
                 curr.right = temp;
                 temp.left = curr;
+                curr = curr.right;
             }
         }
         return head;
@@ -123,7 +124,22 @@ class LeavesToDLLSolution
         getLeaves(root.left,al);
         getLeaves(root.right,al);
     }
-    public void pritntDLL(LeavesNodeToDllNode head){
+    public void pritntDLL(){
+        pritntDLL(head);
+    }
+    void pritntDLL(LeavesNodeToDllNode head){
+        if(head == null)
+            return;
+        while(head.right !=null){
+            System.out.print(head.data+" ");
+            head = head.right;
+        }
+        System.out.println(head.right.data+" ");
+        while(head != null){
+            System.out.print(head.data+" ");
+            head = head.left;
+
+        }
 
     }
 }

@@ -3,17 +3,18 @@ import java.lang.*;
 import java.io.*;
 import java.math.*;
 
-class Node{
-    String data;
-    Node right;
-    Node left;
 
-    Node(String item){
-        data = item;
-    }
-}
 
 public class TreeFromPreOrderAndInOrder {
+    private static class Node{
+        String data;
+        Node right;
+        Node left;
+
+        Node(String item){
+            this.data = item;
+        }
+    }
     public static void  main(String[] args)throws IOException,Exception{
         BufferedReader br = new BufferedReader(new BufferedReader(new InputStreamReader(System.in)));
         //int t = Integer.parseInt(br.readLine());
@@ -37,7 +38,7 @@ public class TreeFromPreOrderAndInOrder {
         int maxNodeLevel = findMaxNodeLevel(maxNodeLevelMap);
         System.out.println("maxNodeLevel = "+maxNodeLevel);
 
-        int returMap = getMaxWidthUtil(tNode , 0, null);
+        Map returMap = getMaxWidthUtil(tNode , 0, null);
         System.out.println("returMap = "+returMap);
 
 
@@ -61,7 +62,7 @@ public class TreeFromPreOrderAndInOrder {
         //Thread.sleep(1000);
         Node tNode = null;
         if(preIndex<inOrder.length && start<=end) {
-            tNode   = new Node(preOrder[preIndex++]);
+            tNode = new Node(preOrder[preIndex++]);
             //System.out.println("tNode = "+tNode.data);
         }
         else{
@@ -171,7 +172,7 @@ public class TreeFromPreOrderAndInOrder {
         if(returnMap == null){
             returnMap = new HashMap();
         }
-        if(root == null) return 0;
+        if(root == null) return null;
         returnMap.put(level,(int) returnMap.getOrDefault(level,0)+1);
         getMaxWidthUtil(root.left, level+1,returnMap);
         getMaxWidthUtil(root.right, level+1,returnMap);

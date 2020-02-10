@@ -67,7 +67,7 @@ class MAinClassForSortingOfStack{
 //Sorting a stack using currency(Coin) sorting problem
     public Stack sortUsingCurrencySolution(Stack<Integer> s){
         Stack<Integer> s1 = new Stack<Integer>();
-        int topS = null;
+        int topS = 0;
         if(s == null || s.isEmpty()){
             return null;
         }

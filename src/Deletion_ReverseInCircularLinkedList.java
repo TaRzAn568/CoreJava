@@ -3,7 +3,7 @@ import java.io.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 //https://practice.geeksforgeeks.org/problems/deletion-and-reverse-in-linked-list/1
-class Node
+/*class Node
 {
     int data;
     Node next;
@@ -12,8 +12,9 @@ class Node
         data=d;
         next=null;
     }
-}
+}*/
 
+/*
 public class Deletion_ReverseInCircularLinkedList {
     public static void printList(Node head)
     {
@@ -96,4 +97,4 @@ public class Deletion_ReverseInCircularLinkedList {
         s.pop();
         return head2;
     }
-}
+}*/
