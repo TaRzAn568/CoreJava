@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Stack;
 
 public class NextGreaterNumber {
 
@@ -14,35 +15,29 @@ public class NextGreaterNumber {
             for(int i=0;i<n;i++){
                 a[i] = Integer.parseInt(s[i]);
             }
-            int k = Integer.parseInt(br.readLine());
-            int res = getSumOfSubArrayLength(a,n,k);
-            System.out.println(res);
+            int[] res = getNextGreaterNumber(a,n);
+            for(int x : res)
+                System.out.print(x+" ");
+            System.out.println();
         }
     }
-    public static int getSumOfSubArrayLength(int[] a, int n, int k){
-        int res = 0;
-        int temp = 0;
-        boolean flag = false;
-        for(int i=0;i<n;i++){
-            if(a[i]<k){
-                temp += 1;
-                if(i == n-1){
-                    res += temp;
-                }
-            }else if(a[i] == k){
-                temp += 1;
-                flag = true;
-                if(i == n-1){
-                    res += temp;
-                }
-            }else if(a[i]>k || i == n-1){
-                if(flag){
-                    res += temp;
-                }
-                temp = 0;
-                flag = false;
-
+    public static int[] getNextGreaterNumber(int[] a, int n){
+        int res[] = new int[n];
+        Stack<Integer> st = new Stack<>();
+        for(int i=0; i<n; i++){
+            if(st.empty() || a[st.peek()] > a[i]){
+                st.push(i);
             }
+            else{
+                while(!st.empty() && a[st.peek()] < a[i]){
+                    int top = st.pop();
+                    res[top] = a[i];
+                }
+                st.push(i);
+            }
+        }
+        while(!st.empty()){
+            res[st.pop()] = -1;
         }
         return res;
     }

@@ -4,7 +4,7 @@ import java.lang.*;
 import java.io.*;
 import java.math.*;
 
-class Main{
+class Main2{
     public static void main (String[] args)throws IOException {
         ConvertToInteger obj = new ConvertToInteger();
         obj.convertToInteger();
