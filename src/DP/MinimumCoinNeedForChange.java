@@ -30,8 +30,7 @@ class MinimumCoinNeedForChangeSolution{
     {
         // Your code goes here
         int [][] dp = new int[M+1][V+1];
-        int y = minCoinRecursive(coins,M,V,dp);
-        System.out.println(y+" ");
+        //int x = minCoinRecursive(coins,M,V,dp);
         int x = minCoinBottomUp(coins, M, V);
         return x == Integer.MAX_VALUE-1 ? -1 : x;
 
