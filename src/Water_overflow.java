@@ -2,7 +2,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 // https://practice.geeksforgeeks.org/problems/champagne-overflow/0/
-class GfG{
+class Water_overflow{
  public static void main (String[] args)throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(br.readLine());

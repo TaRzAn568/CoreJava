@@ -12,7 +12,7 @@ class NoToRoman
 		{
 			int N = sc.nextInt();
 			
-			GfG g = new GfG();
+			NoToRomanSol g = new NoToRomanSol();
 			System.out.println (g.convertToRoman(N));
 			t--;
 		}
@@ -21,7 +21,7 @@ class NoToRoman
 
 
 /*you are required to complete this function*/
-class GfG
+class NoToRomanSol
 {
     String convertToRoman(int n)
     {

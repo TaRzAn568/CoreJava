@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="jackson-core-2.9.8">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.10.2/jackson-databind-2.10.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.10.2/jackson-annotations-2.10.2.jar!/" />
+      <root url="file://$MAVEN_REPOSITORY$/com/fasterxml" />
+      <root url="file://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.10.2" />
+      <root url="file://C:/Program Files/grails-2.3.11/grails-2.3.11/lib/log4j" />
+      <root url="jar://C:/Program Files/grails-2.3.11/grails-2.3.11/lib/log4j/log4j/jars/log4j-1.2.17.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://C:/Program Files/grails-2.3.11/grails-2.3.11/lib/log4j/log4j/jars/log4j-1.2.17-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.10.2" />
+      <root url="jar://C:/Program Files/grails-2.3.11/grails-2.3.11/lib/log4j/log4j/jars/log4j-1.2.17-sources.jar!/" />
+    </SOURCES>
+    <jarDirectory url="file://C:/Program Files/grails-2.3.11/grails-2.3.11/lib/log4j" recursive="false" />
+    <jarDirectory url="file://$MAVEN_REPOSITORY$/com/fasterxml" recursive="false" />
+    <jarDirectory url="file://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.10.2" recursive="false" />
+    <jarDirectory url="file://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.10.2" recursive="false" type="SOURCES" />
+  </library>
+</component>
