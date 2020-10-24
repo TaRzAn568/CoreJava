@@ -4,14 +4,14 @@
 import java.io.*;
 import java.util.*;
 
-class SingleLLNode {
+/*class SingleLLNode {
     int data;
     SingleLLNode next;
 
     public SingleLLNode(int data){
         this.data = data;
     }
-}
+}*/
 
 class DeleteAlternateFromLL {
 

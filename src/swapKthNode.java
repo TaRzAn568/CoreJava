@@ -6,7 +6,6 @@ import java.util.*;
         import java.io.*;
         import java.lang.*;
 
-/*
 class SingleLLNode
 {
     int data;
@@ -18,7 +17,6 @@ class SingleLLNode
         next = null;
     }
 }
-*/
 
 class swapKthNode
 {
