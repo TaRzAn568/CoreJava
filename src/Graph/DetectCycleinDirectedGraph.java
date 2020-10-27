@@ -1,5 +1,3 @@
-package Graph;
-
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -40,17 +38,20 @@ class DetectCycle
 
         boolean visited[] = new boolean[V];
         boolean helper[] = new boolean[V];
+        boolean dfsAns = false;
         for(int i=0; i<V; i++){
 
             if(!visited[i]){
-                boolean ans =  dfs(adj,i, visited, helper) ;
-                if(ans){
-                    return true;
+                boolean dfsAns =  dfs(adj,i, visited, helper) ;
+                if(dfsAns){
+                    break;
                 }
             }
 
         }
-        return false;
+
+        //boolean bfsAns = bfs(adj,V);
+        return dfsAns;
 
     }
 
@@ -76,28 +77,37 @@ class DetectCycle
     }
 
     static boolean bfs(ArrayList<ArrayList<Integer>> adj, int V){
-        boolean [] visited = new boolean[V];
-        Queue<Integer> q = new LinkedList<>();
-        q.add(0);
-        visited[0] = true;
         boolean res = false;
-        while(!q.isEmpty()){
-            int parent = q.poll();
-            ArrayList<Integer> childs = adj.get(parent);
-            for(int child : childs){
-                if(!visited[child]){
-                    q.add(child);
-                    visited[child] = true;
-                }else{
-                    res = true;
-                    break;
-                }
-            }
-            if(res)
-            {
-                break;
+        int[] indegree = new int[V];
+        for(List<Integer> children : adj){
+            for(int child : children){
+                indegree[child]++;
             }
         }
-        return res;
+        Queue<Integer> q = new LinkedList<>();
+
+        for(int i=0;i<V; i++){
+            if(indegree[i] == 0)
+            {
+                q.add(i);
+            }
+        }
+        int count = 0;
+        while(!q.isEmpty()){
+            int polled = q.poll();
+            count += 1;
+            List<Integer> children = adj.get(polled);
+            if(children != null){
+                for(int child : children){
+                    indegree[child]--;
+                    if(indegree[child] == 0){
+                        q.add(child);
+                    }
+                }
+            }
+        }
+        return count < V;
     }
+
+
 }
