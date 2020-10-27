@@ -42,7 +42,7 @@ class DetectCycle
         for(int i=0; i<V; i++){
 
             if(!visited[i]){
-                boolean dfsAns =  dfs(adj,i, visited, helper) ;
+                 dfsAns =  dfs(adj,i, visited, helper) ;
                 if(dfsAns){
                     break;
                 }
