@@ -1,58 +1,33 @@
+package Graph;
+import java.nio.channels.FileChannel;
 import java.util.*;
-import java.io.*;
-import java.util.Arrays;
+class Main {
 
-class Main1 {
+    public static void main(String[] dksh){
+        Graph g = new Graph(4);
+        GraphImpl gs = new GraphImpl();
+        gs.buildGraph(g);
 
-    public static void main(String[] dksh)throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int tc = Integer.parseInt(br.readLine());
-        while(tc-- > 0){
-            int [] board = buildBoardArray(br);
-
-
-            Graph g = new Graph(30);
-            GraphImpl gs = new GraphImpl();
-            gs.buildGraph(g,board);
-
-            // gs.printAdjacencyList(g);
-            int minDice = gs.BFS(g,1,30);
-            System.out.println(minDice);
-        }
+        gs.printAdjacencyList(g);
+        gs.BFS(g,0,3);
 
     }
 
 
-    public static int[] buildBoardArray(BufferedReader br){
-        int [] board = new int[31];
-        try{
 
-            int n = Integer.parseInt(br.readLine());
-            String[] s = br.readLine().split(" ");
-            for(int i=0; i<s.length; i = i+2){
 
-                    board[Integer.parseInt(s[i])] = Integer.parseInt(s[i+1]) - Integer.parseInt(s[i]);
 
-            }
-
-        }
-        catch(Exception e){
-
-        }
-        return board;
-    }
 }
+
 class GraphImpl {
-    void buildGraph(Graph g,int[] board){
-        for(int i=1; i<=30; i++){
-            for(int j =1; j<=6; j++){
-                if(i+j <=30)
-                    g.addEdge(i,i+j+board[i+j]);
-            }
-        }
-
-
-
+    void buildGraph(Graph g){
+        g.addEdge(0,4,true);
+        g.addEdge(4,3,true);
+        g.addEdge(4,1,true);
+        g.addEdge(3,1,true);
+        g.addEdge(3,2,true);
+        g.addEdge(2,1,true);
+        g.addEdge(0,1,true);
     }
 
     public  void printAdjacencyList(Graph g){
@@ -64,7 +39,7 @@ class GraphImpl {
     }
 
 
-    public int BFS(Graph g, int source, int destination){
+    public void BFS(Graph g, int source, int destination){
 
         boolean[] visited = new boolean[g.V+1];
         visited[source] = true;
@@ -77,20 +52,23 @@ class GraphImpl {
         dist[source] = 0;
         while (!q.isEmpty()){
             int parent = q.poll();
-            // System.out.print(parent+" ");
+           // System.out.print(parent+" ");
             List<Integer> neighbours = g.map.get(parent);
-            if(neighbours != null)
             for (int neighbour : neighbours){
                 if(!visited[neighbour]){
                     q.add(neighbour);
                     visited[neighbour] = true;
                     dist[neighbour] = dist[parent] +1;
                     parentArray[neighbour] = parent;
-                    //System.out.println("Shortest distance of "+neighbour+" from "+source+" is "+dist[neighbour]);
+                    System.out.println("Shortest distance of "+neighbour+" from "+source+" is "+dist[neighbour]);
                 }
             }
         }
-        return dist[destination];
+        int temp = destination;
+        while(temp != -1){
+            System.out.print(temp +"<--");
+            temp = parentArray[temp];
+        }
 
     }
 }
