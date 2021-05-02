@@ -1,35 +1,59 @@
-/*
 package MultiThreading;
 
-import com.sun.org.apache.xerces.internal.parsers.CachingParserPool;
-
 public class OddEvenUsingTwoThread {
-public static void main(String[] args){
-    Thread t1 = new Thread(new Thread1());
-    Thread t2 = new Thread(new Thread2());
-    t1.start();
-    t2.start();
+    public static void main(String[] args){
+        int totalThread = 3;
+        int numbers = 30;
+        PrintOE printOE = new PrintOE(numbers, totalThread);
+        Thread t1 = new Thread(new PrintOESequnece(printOE,0),"Thread-1");
+        Thread t2 = new Thread(new PrintOESequnece(printOE,1),"Thread-2");
+        Thread t3 = new Thread(new PrintOESequnece(printOE,2),"Thread-3");
+        t1.start();
+        t2.start();
+        t3.start();
 
-}
+    }
 }
 
-class Thread1 implements Runnable{
+
+class PrintOESequnece implements Runnable{
+    PrintOE printOE;
+    int res;
+
+    PrintOESequnece(PrintOE printOE, int res){
+        this.printOE = printOE;
+        this.res = res;
+    }
+    @Override
     public void run(){
-        for(int i=1; i<=20; i=i+2){
+        printOE.printNum(res);
+    }
+}
 
-             synchronized (Thread1.class) {
-                Thread1.wait();
-                System.out.print(i + " ");
+class PrintOE{
+    int n=1;
+    int totalNumberInSequence;
+    int numberOfThreads;
+    PrintOE(int x, int y){
+        this.totalNumberInSequence = x;
+        this.numberOfThreads = y;
+    }
+
+    void printNum(int res) {
+        synchronized (this){
+            while (n < totalNumberInSequence) {
+                while (n % numberOfThreads != res) {
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                    System.out.println(Thread.currentThread().getName()+"_"+ n++);
+                    notifyAll();
+
             }
         }
     }
 }
 
-class Thread2 implements Runnable{
-    public void run(){
-        for(int i=2; i<=20; i=i+2){
-            System.out.print(i+" ");
-        }
-    }
-}
-*/

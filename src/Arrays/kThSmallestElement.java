@@ -22,6 +22,7 @@ class kThSmallestElement {
 
         }
     }
+
     static int res = -1;
     public static int getKthMinEleUsingQuickSelect(int[] a, int n, int k){
 

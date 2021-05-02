@@ -53,7 +53,7 @@ class StreamDemo {
                         .filter(x-> x.age >= 25)
                         .sorted((o1, o2)->(o1.salary > o2.salary ? 1 :-1))
                         .collect(Collectors.toList());
-        //.forEach(x-> System.out.println(x.id+" "+x.name+" "+x.age+" "+x.salary));
+     //   .forEach(x-> System.out.println(x.id+" "+x.name+" "+x.age+" "+x.salary));
 
         for (Employee x : filteredList)
             System.out.println(x.id+" "+x.name+" "+x.age+" "+x.salary);
